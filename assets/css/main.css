@@ -1624,7 +1624,7 @@
 
 	body {
 		background-color: #644a74;
-		background-image: linear-gradient(to top, rgba(46, 49, 65, 0.8), rgba(46, 49, 65, 0.8)), url("../../images/M33-Tri.jpg");
+		background-image: linear-gradient(to top, rgba(46, 49, 65, 0.8), rgba(46, 49, 65, 0.8)), url("../../images/m81.jpg");
 		background-size: auto, cover;
 		background-attachment: fixed, fixed;
 		background-position: center, center;
@@ -2001,7 +2001,7 @@
 
 	select option {
 		color: #ffffff;
-		background: #b48dc1;
+		background: #644a74;
 	}
 
 	input[type="text"],
@@ -2081,7 +2081,7 @@
 
 		input[type="checkbox"]:focus + label:before,
 		input[type="radio"]:focus + label:before {
-			border-color: #b4e5cf;
+			border-color: #b48dc1;
 		}
 
 	input[type="checkbox"] + label:before {
@@ -2724,7 +2724,7 @@
 
 		.features article {
 			padding: 1.75em 1.75em 0.1em 1.75em ;
-			background-color: #644a74;
+			background-color: #353849;
 			border-radius: 5px;
 			margin: 1.5em 3em 1.5em 0;
 			width: calc(50% - 1.5em);
@@ -3054,7 +3054,7 @@
 				}
 
 					#menu .links li a:hover {
-						background: #b48dc1;
+						background: #d8f2e7;
 					}
 
 		@media screen and (max-width: 736px) {
@@ -3186,7 +3186,7 @@
 			#banner {
 				padding: 7em 0 8.25em 0 ;
 				background-color: #644a74;
-				background-image: linear-gradient(to top, rgba(46, 49, 65, 0.8), rgba(46, 49, 65, 0.8)), url("../../images/M33-Tri.jpg.jpg");
+				background-image: linear-gradient(to top, rgba(46, 49, 65, 0.8), rgba(46, 49, 65, 0.8)), url("../../images/m81.jpg");
 				background-size: auto, cover;
 				background-position: center, center;
 				margin-bottom: -6.5em;
@@ -3296,7 +3296,7 @@
 		#wrapper > header {
 			padding: 9em 0 6.25em 0 ;
 			background-color: #644a74;
-			background-image: linear-gradient(to top, rgba(46, 49, 65, 0.8), rgba(46, 49, 65, 0.8)), url("../../images/bg.jpg");
+			background-image: linear-gradient(to top, rgba(46, 49, 65, 0.8), rgba(46, 49, 65, 0.8)), url("../../images/m81.jpg");
 			background-size: auto, cover;
 			background-position: center, 0% 30%;
 			margin-bottom: -6.5em;
@@ -3400,7 +3400,7 @@
 		}
 
 		.wrapper.style2 {
-			background-color: #b4e5cf;
+			background-color: #353849;
 		}
 
 			.wrapper.style2:before, .wrapper.style2:after {
@@ -3408,15 +3408,15 @@
 			}
 
 			.wrapper.style2:before {
-				box-shadow: inset 0 -1px 0 0 #b4e5cf, 0 1px 0 0 #b4e5cf;
+				box-shadow: inset 0 -1px 0 0 #353849, 0 1px 0 0 #353849;
 			}
 
 			.wrapper.style2:after {
-				box-shadow: inset 0 -1px 0 0 #b4e5cf, 0 1px 0 0 #b4e5cf;
+				box-shadow: inset 0 -1px 0 0 #353849, 0 1px 0 0 #353849;
 			}
 
 		.wrapper.style3 {
-			background-color: #d8f2e7;
+			background-color: #3d4051;
 		}
 
 			.wrapper.style3:before, .wrapper.style3:after {
@@ -3424,15 +3424,15 @@
 			}
 
 			.wrapper.style3:before {
-				box-shadow: inset 0 -1px 0 0 #d8f2e7, 0 1px 0 0 #d8f2e7;
+				box-shadow: inset 0 -1px 0 0 #3d4051, 0 1px 0 0 #3d4051;
 			}
 
 			.wrapper.style3:after {
-				box-shadow: inset 0 -1px 0 0 #d8f2e7, 0 1px 0 0 #d8f2e7;
+				box-shadow: inset 0 -1px 0 0 #3d4051, 0 1px 0 0 #3d4051;
 			}
 
 		.wrapper.style4 {
-			background-color: #f39f79;
+			background-color: #454858;
 		}
 
 			.wrapper.style4:before, .wrapper.style4:after {
@@ -3440,15 +3440,15 @@
 			}
 
 			.wrapper.style4:before {
-				box-shadow: inset 0 -1px 0 0 #f39f79, 0 1px 0 0 #f39f79;
+				box-shadow: inset 0 -1px 0 0 #454858, 0 1px 0 0 #454858;
 			}
 
 			.wrapper.style4:after {
-				box-shadow: inset 0 -1px 0 0 #f39f79, 0 1px 0 0 #f39f79;
+				box-shadow: inset 0 -1px 0 0 #454858, 0 1px 0 0 #454858;
 			}
 
 		.wrapper.style5 {
-			background-color: #b48dc1;
+			background-color: #4d5060;
 		}
 
 			.wrapper.style5:before, .wrapper.style5:after {
@@ -3456,15 +3456,15 @@
 			}
 
 			.wrapper.style5:before {
-				box-shadow: inset 0 -1px 0 0 #b48dc1, 0 1px 0 0 #b48dc1;
+				box-shadow: inset 0 -1px 0 0 #4d5060, 0 1px 0 0 #4d5060;
 			}
 
 			.wrapper.style5:after {
-				box-shadow: inset 0 -1px 0 0 #b48dc1, 0 1px 0 0 #b48dc1;
+				box-shadow: inset 0 -1px 0 0 #4d5060, 0 1px 0 0 #4d5060;
 			}
 
 		.wrapper.style6 {
-			background-color: #b4e5cf;
+			background-color: #555867;
 		}
 
 			.wrapper.style6:before, .wrapper.style6:after {
@@ -3472,11 +3472,11 @@
 			}
 
 			.wrapper.style6:before {
-				box-shadow: inset 0 -1px 0 0 #b4e5cf, 0 1px 0 0 #b4e5cf;
+				box-shadow: inset 0 -1px 0 0 #555867, 0 1px 0 0 #555867;
 			}
 
 			.wrapper.style6:after {
-				box-shadow: inset 0 -1px 0 0 #b4e5cf, 0 1px 0 0 #b4e5cf;
+				box-shadow: inset 0 -1px 0 0 #555867, 0 1px 0 0 #555867;
 			}
 
 		.wrapper.spotlight {
@@ -3488,11 +3488,11 @@
 			}
 
 			.wrapper.spotlight:before {
-				box-shadow: inset 0 -1px 0 0 #b4e5cf, 0 1px 0 0 #b4e5cf;
+				box-shadow: inset 0 -1px 0 0 #b48dc1, 0 1px 0 0 #b48dc1;
 			}
 
 			.wrapper.spotlight:after {
-				box-shadow: inset 0 -1px 0 0 #b4e5cf, 0 1px 0 0 #b4e5cf;
+				box-shadow: inset 0 -1px 0 0 #b48dc1, 0 1px 0 0 #b48dc1;
 			}
 
 			.wrapper.spotlight .inner {
@@ -3541,7 +3541,7 @@
 			}
 
 			.wrapper.spotlight.style2 {
-				background-color: #f39f79;
+				background-color: #d8f2e7;
 			}
 
 				.wrapper.spotlight.style2:before, .wrapper.spotlight.style2:after {
@@ -3549,15 +3549,15 @@
 				}
 
 				.wrapper.spotlight.style2:before {
-					box-shadow: inset 0 -1px 0 0 #f39f79, 0 1px 0 0 #f39f79;
+					box-shadow: inset 0 -1px 0 0 #d8f2e7, 0 1px 0 0 #d8f2e7;
 				}
 
 				.wrapper.spotlight.style2:after {
-					box-shadow: inset 0 -1px 0 0 #f39f79, 0 1px 0 0 #f39f79;
+					box-shadow: inset 0 -1px 0 0 #d8f2e7, 0 1px 0 0 #d8f2e7;
 				}
 
 			.wrapper.spotlight.style3 {
-				background-color: #b48dc1;
+				background-color: #3f4e85;
 			}
 
 				.wrapper.spotlight.style3:before, .wrapper.spotlight.style3:after {
@@ -3565,15 +3565,15 @@
 				}
 
 				.wrapper.spotlight.style3:before {
-					box-shadow: inset 0 -1px 0 0 #b48dc1, 0 1px 0 0 #b48dc1;
+					box-shadow: inset 0 -1px 0 0 #3f4e85, 0 1px 0 0 #3f4e85;
 				}
 
 				.wrapper.spotlight.style3:after {
-					box-shadow: inset 0 -1px 0 0 #b48dc1, 0 1px 0 0 #b48dc1;
+					box-shadow: inset 0 -1px 0 0 #3f4e85, 0 1px 0 0 #3f4e85;
 				}
 
 			.wrapper.spotlight.style4 {
-				background-color: #d8f2e7;
+				background-color: #39477c;
 			}
 
 				.wrapper.spotlight.style4:before, .wrapper.spotlight.style4:after {
@@ -3581,15 +3581,15 @@
 				}
 
 				.wrapper.spotlight.style4:before {
-					box-shadow: inset 0 -1px 0 0 #d8f2e7, 0 1px 0 0 #d8f2e7;
+					box-shadow: inset 0 -1px 0 0 #39477c, 0 1px 0 0 #39477c;
 				}
 
 				.wrapper.spotlight.style4:after {
-					box-shadow: inset 0 -1px 0 0 #d8f2e7, 0 1px 0 0 #d8f2e7;
+					box-shadow: inset 0 -1px 0 0 #39477c, 0 1px 0 0 #39477c;
 				}
 
 			.wrapper.spotlight.style5 {
-				background-color: #b4e5cf;
+				background-color: #324072;
 			}
 
 				.wrapper.spotlight.style5:before, .wrapper.spotlight.style5:after {
@@ -3597,15 +3597,15 @@
 				}
 
 				.wrapper.spotlight.style5:before {
-					box-shadow: inset 0 -1px 0 0 #b4e5cf, 0 1px 0 0 #b4e5cf;
+					box-shadow: inset 0 -1px 0 0 #324072, 0 1px 0 0 #324072;
 				}
 
 				.wrapper.spotlight.style5:after {
-					box-shadow: inset 0 -1px 0 0 #b4e5cf, 0 1px 0 0 #b4e5cf;
+					box-shadow: inset 0 -1px 0 0 #324072, 0 1px 0 0 #324072;
 				}
 
 			.wrapper.spotlight.style6 {
-				background-color: #f39f79;
+				background-color: #2d3a69;
 			}
 
 				.wrapper.spotlight.style6:before, .wrapper.spotlight.style6:after {
@@ -3613,11 +3613,11 @@
 				}
 
 				.wrapper.spotlight.style6:before {
-					box-shadow: inset 0 -1px 0 0 #f39f79, 0 1px 0 0 #f39f79;
+					box-shadow: inset 0 -1px 0 0 #2d3a69, 0 1px 0 0 #2d3a69;
 				}
 
 				.wrapper.spotlight.style6:after {
-					box-shadow: inset 0 -1px 0 0 #f39f79, 0 1px 0 0 #f39f79;
+					box-shadow: inset 0 -1px 0 0 #2d3a69, 0 1px 0 0 #2d3a69;
 				}
 
 		@media screen and (max-width: 980px) {
@@ -3784,7 +3784,7 @@
 
 		#footer {
 			background-color: #644a74;
-			background-image: linear-gradient(to top, rgba(46, 49, 65, 0.8), rgba(46, 49, 65, 0.8)), url("../../images/bg.jpg");
+			background-image: linear-gradient(to top, rgba(46, 49, 65, 0.8), rgba(46, 49, 65, 0.8)), url("../../images/m81.jpg");
 			background-size: auto, cover;
 			background-position: center, center;
 			margin-top: -6.5em;
