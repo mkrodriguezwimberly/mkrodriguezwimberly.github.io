@@ -1624,7 +1624,7 @@
 
 	body {
 		background-color: #644a74;
-		background-image: linear-gradient(to top, rgba(46, 49, 65, 0.8), rgba(46, 49, 65, 0.8)), url("../../images/m81.jpg");
+		background-image: linear-gradient(to top, rgba(96, 76, 113, 0.8), rgba(96, 76, 113, 0.8)), url("../../images/m81.jpg");
 		background-size: auto, cover;
 		background-attachment: fixed, fixed;
 		background-position: center, center;
@@ -2724,7 +2724,7 @@
 
 		.features article {
 			padding: 1.75em 1.75em 0.1em 1.75em ;
-			background-color: #353849;
+			background-color: #b48dc1;
 			border-radius: 5px;
 			margin: 1.5em 3em 1.5em 0;
 			width: calc(50% - 1.5em);
@@ -2975,7 +2975,7 @@
 		-ms-user-select: none;
 		user-select: none;
 		-webkit-tap-highlight-color: transparent;
-		background: rgba(46, 49, 65, 0.8);
+		background: rgba(96, 76, 113, 0.8);
 		cursor: default;
 		height: 100%;
 		left: 0;
@@ -3186,7 +3186,7 @@
 			#banner {
 				padding: 7em 0 8.25em 0 ;
 				background-color: #644a74;
-				background-image: linear-gradient(to top, rgba(46, 49, 65, 0.8), rgba(46, 49, 65, 0.8)), url("../../images/m81.jpg");
+				background-image: linear-gradient(to top, rgba(96, 76, 113, 0.8), rgba(96, 76, 113, 0.8)), url("../../images/m81.jpg");
 				background-size: auto, cover;
 				background-position: center, center;
 				margin-bottom: -6.5em;
@@ -3296,7 +3296,7 @@
 		#wrapper > header {
 			padding: 9em 0 6.25em 0 ;
 			background-color: #644a74;
-			background-image: linear-gradient(to top, rgba(46, 49, 65, 0.8), rgba(46, 49, 65, 0.8)), url("../../images/m81.jpg");
+			background-image: linear-gradient(to top, rgba(96, 76, 113, 0.8), rgba(96, 76, 113, 0.8)), url("../../images/m81.jpg");
 			background-size: auto, cover;
 			background-position: center, 0% 30%;
 			margin-bottom: -6.5em;
@@ -3400,19 +3400,19 @@
 		}
 
 		.wrapper.style2 {
-			background-color: #353849;
+			background-color: #b48dc1;
 		}
 
 			.wrapper.style2:before, .wrapper.style2:after {
-				background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon points='0,100 100,0 100,100' style='fill:%23353849%3B' /%3E%3C/svg%3E");
+				background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon points='0,100 100,0 100,100' style='fill:%23b48dc1%3B' /%3E%3C/svg%3E");
 			}
 
 			.wrapper.style2:before {
-				box-shadow: inset 0 -1px 0 0 #353849, 0 1px 0 0 #353849;
+				box-shadow: inset 0 -1px 0 0 #b48dc1, 0 1px 0 0 #b48dc1;
 			}
 
 			.wrapper.style2:after {
-				box-shadow: inset 0 -1px 0 0 #353849, 0 1px 0 0 #353849;
+				box-shadow: inset 0 -1px 0 0 #b48dc1, 0 1px 0 0 #b48dc1;
 			}
 
 		.wrapper.style3 {
@@ -3784,7 +3784,7 @@
 
 		#footer {
 			background-color: #644a74;
-			background-image: linear-gradient(to top, rgba(46, 49, 65, 0.8), rgba(46, 49, 65, 0.8)), url("../../images/m81.jpg");
+			background-image: linear-gradient(to top, rgba(96, 76, 113, 0.8), rgba(96, 76, 113, 0.8)), url("../../images/m81.jpg");
 			background-size: auto, cover;
 			background-position: center, center;
 			margin-top: -6.5em;
