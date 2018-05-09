@@ -1623,7 +1623,7 @@
 	}
 
 	body {
-		background-color: #644a74;
+		background-color: #d8f2e7;
 		background-image: linear-gradient(to top, rgba(96, 76, 113, 0.8), rgba(96, 76, 113, 0.8)), url("../../images/m81.jpg");
 		background-size: auto, cover;
 		background-attachment: fixed, fixed;
@@ -2647,7 +2647,7 @@
 			input[type="button"].special:active,
 			button.special:active,
 			.button.special:active {
-				background-color: #d8f2e7;
+				background-color: #f39f79;
 			}
 
 			input[type="submit"].special.icon:before,
@@ -2655,7 +2655,7 @@
 			input[type="button"].special.icon:before,
 			button.special.icon:before,
 			.button.special.icon:before {
-				color: #7985b0;
+				color: #f39f79;
 			}
 
 		input[type="submit"].fit,
@@ -3054,7 +3054,7 @@
 				}
 
 					#menu .links li a:hover {
-						background: #d8f2e7;
+						background: #f39f79;
 					}
 
 		@media screen and (max-width: 736px) {
@@ -3185,7 +3185,7 @@
 
 			#banner {
 				padding: 7em 0 8.25em 0 ;
-				background-color: #644a74;
+				background-color: #d8f2e7;
 				background-image: linear-gradient(to top, rgba(96, 76, 113, 0.8), rgba(96, 76, 113, 0.8)), url("../../images/m81.jpg");
 				background-size: auto, cover;
 				background-position: center, center;
@@ -3295,7 +3295,7 @@
 
 		#wrapper > header {
 			padding: 9em 0 6.25em 0 ;
-			background-color: #644a74;
+			background-color: #d8f2e7;
 			background-image: linear-gradient(to top, rgba(96, 76, 113, 0.8), rgba(96, 76, 113, 0.8)), url("../../images/m81.jpg");
 			background-size: auto, cover;
 			background-position: center, 0% 30%;
@@ -3416,19 +3416,19 @@
 			}
 
 		.wrapper.style3 {
-			background-color: #3d4051;
+			background-color: #644a74;
 		}
 
 			.wrapper.style3:before, .wrapper.style3:after {
-				background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon points='0,100 100,0 100,100' style='fill:%233d4051%3B' /%3E%3C/svg%3E");
+				background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon points='0,100 100,0 100,100' style='fill:%23644a74%3B' /%3E%3C/svg%3E");
 			}
 
 			.wrapper.style3:before {
-				box-shadow: inset 0 -1px 0 0 #3d4051, 0 1px 0 0 #3d4051;
+				box-shadow: inset 0 -1px 0 0 #644a74, 0 1px 0 0 #644a74;
 			}
 
 			.wrapper.style3:after {
-				box-shadow: inset 0 -1px 0 0 #3d4051, 0 1px 0 0 #3d4051;
+				box-shadow: inset 0 -1px 0 0 #644a74, 0 1px 0 0 #644a74;
 			}
 
 		.wrapper.style4 {
@@ -3541,19 +3541,19 @@
 			}
 
 			.wrapper.spotlight.style2 {
-				background-color: #d8f2e7;
+				background-color: #f39f79;
 			}
 
 				.wrapper.spotlight.style2:before, .wrapper.spotlight.style2:after {
-					background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon points='0,100 100,0 100,100' style='fill:%23d8f2e7%3B' /%3E%3C/svg%3E");
+					background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon points='0,100 100,0 100,100' style='fill:%23f39f79%3B' /%3E%3C/svg%3E");
 				}
 
 				.wrapper.spotlight.style2:before {
-					box-shadow: inset 0 -1px 0 0 #d8f2e7, 0 1px 0 0 #d8f2e7;
+					box-shadow: inset 0 -1px 0 0 #f39f79, 0 1px 0 0 #f39f79;
 				}
 
 				.wrapper.spotlight.style2:after {
-					box-shadow: inset 0 -1px 0 0 #d8f2e7, 0 1px 0 0 #d8f2e7;
+					box-shadow: inset 0 -1px 0 0 #f39f79, 0 1px 0 0 #f39f79;
 				}
 
 			.wrapper.spotlight.style3 {
@@ -3783,7 +3783,7 @@
 	@media screen and (max-width: 1280px) {
 
 		#footer {
-			background-color: #644a74;
+			background-color: #d8f2e7;
 			background-image: linear-gradient(to top, rgba(96, 76, 113, 0.8), rgba(96, 76, 113, 0.8)), url("../../images/m81.jpg");
 			background-size: auto, cover;
 			background-position: center, center;
