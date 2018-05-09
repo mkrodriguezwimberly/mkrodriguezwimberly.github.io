@@ -1963,7 +1963,7 @@
 		input[type="tel"]:focus,
 		select:focus,
 		textarea:focus {
-			border-color: #b4e5cf;
+			border-color: #96c5b0;
 		}
 
 	.select-wrapper {
@@ -3448,35 +3448,35 @@
 			}
 
 		.wrapper.style5 {
-			background-color: #b4e5cf;
+			background-color: #96c5b0;
 		}
 
 			.wrapper.style5:before, .wrapper.style5:after {
-				background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon points='0,100 100,0 100,100' style='fill:%23b4e5cf%3B' /%3E%3C/svg%3E");
+				background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon points='0,100 100,0 100,100' style='fill:%2396c5b0%3B' /%3E%3C/svg%3E");
 			}
 
 			.wrapper.style5:before {
-				box-shadow: inset 0 -1px 0 0 #b4e5cf, 0 1px 0 0 #b4e5cf;
+				box-shadow: inset 0 -1px 0 0 #96c5b0, 0 1px 0 0 #96c5b0;
 			}
 
 			.wrapper.style5:after {
-				box-shadow: inset 0 -1px 0 0 #b4e5cf, 0 1px 0 0 #b4e5cf;
+				box-shadow: inset 0 -1px 0 0 #96c5b0, 0 1px 0 0 #96c5b0;
 			}
 
 		.wrapper.style6 {
-			background-color: #b4e5cf;
+			background-color: #96c5b0;
 		}
 
 			.wrapper.style6:before, .wrapper.style6:after {
-				background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon points='0,100 100,0 100,100' style='fill:%23b4e5cf%3B' /%3E%3C/svg%3E");
+				background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon points='0,100 100,0 100,100' style='fill:%2396c5b0%3B' /%3E%3C/svg%3E");
 			}
 
 			.wrapper.style6:before {
-				box-shadow: inset 0 -1px 0 0 #b4e5cf, 0 1px 0 0 #b4e5cf;
+				box-shadow: inset 0 -1px 0 0 #96c5b0, 0 1px 0 0 #96c5b0;
 			}
 
 			.wrapper.style6:after {
-				box-shadow: inset 0 -1px 0 0 #b4e5cf, 0 1px 0 0 #b4e5cf;
+				box-shadow: inset 0 -1px 0 0 #96c5b0, 0 1px 0 0 #96c5b0;
 			}
 
 		.wrapper.spotlight {
@@ -3557,67 +3557,67 @@
 				}
 
 			.wrapper.spotlight.style3 {
-				background-color: #b4e5cf;
+				background-color: #96c5b0;
 			}
 
 				.wrapper.spotlight.style3:before, .wrapper.spotlight.style3:after {
-					background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon points='0,100 100,0 100,100' style='fill:%23b4e5cf%3B' /%3E%3C/svg%3E");
+					background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon points='0,100 100,0 100,100' style='fill:%2396c5b0%3B' /%3E%3C/svg%3E");
 				}
 
 				.wrapper.spotlight.style3:before {
-					box-shadow: inset 0 -1px 0 0 #b4e5cf, 0 1px 0 0 #b4e5cf;
+					box-shadow: inset 0 -1px 0 0 #96c5b0, 0 1px 0 0 #96c5b0;
 				}
 
 				.wrapper.spotlight.style3:after {
-					box-shadow: inset 0 -1px 0 0 #b4e5cf, 0 1px 0 0 #b4e5cf;
+					box-shadow: inset 0 -1px 0 0 #96c5b0, 0 1px 0 0 #96c5b0;
 				}
 
 			.wrapper.spotlight.style4 {
-				background-color: #b4e5cf;
+				background-color: #96c5b0;
 			}
 
 				.wrapper.spotlight.style4:before, .wrapper.spotlight.style4:after {
-					background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon points='0,100 100,0 100,100' style='fill:%23 b4e5cf%3B' /%3E%3C/svg%3E");
+					background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon points='0,100 100,0 100,100' style='fill:%23 96c5b0%3B' /%3E%3C/svg%3E");
 				}
 
 				.wrapper.spotlight.style4:before {
-					box-shadow: inset 0 -1px 0 0 #b4e5cf, 0 1px 0 0 #b4e5cf;
+					box-shadow: inset 0 -1px 0 0 #96c5b0, 0 1px 0 0 #96c5b0;
 				}
 
 				.wrapper.spotlight.style4:after {
-					box-shadow: inset 0 -1px 0 0 #b4e5cf, 0 1px 0 0 #b4e5cf;
+					box-shadow: inset 0 -1px 0 0 #96c5b0, 0 1px 0 0 #96c5b0;
 				}
 
 			.wrapper.spotlight.style5 {
-				background-color: #b4e5cf;
+				background-color: #96c5b0;
 			}
 
 				.wrapper.spotlight.style5:before, .wrapper.spotlight.style5:after {
-					background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon points='0,100 100,0 100,100' style='fill:%23 b4e5cf%3B' /%3E%3C/svg%3E");
+					background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon points='0,100 100,0 100,100' style='fill:%23 96c5b0%3B' /%3E%3C/svg%3E");
 				}
 
 				.wrapper.spotlight.style5:before {
-					box-shadow: inset 0 -1px 0 0 #b4e5cf, 0 1px 0 0 #b4e5cf;
+					box-shadow: inset 0 -1px 0 0 #96c5b0, 0 1px 0 0 #96c5b0;
 				}
 
 				.wrapper.spotlight.style5:after {
-					box-shadow: inset 0 -1px 0 0 #b4e5cf, 0 1px 0 0 #b4e5cf;
+					box-shadow: inset 0 -1px 0 0 #96c5b0, 0 1px 0 0 #96c5b0;
 				}
 
 			.wrapper.spotlight.style6 {
-				background-color: #b4e5cf;
+				background-color: #96c5b0;
 			}
 
 				.wrapper.spotlight.style6:before, .wrapper.spotlight.style6:after {
-					background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon points='0,100 100,0 100,100' style='fill:%23 b4e5cf%3B' /%3E%3C/svg%3E");
+					background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon points='0,100 100,0 100,100' style='fill:%23 96c5b0%3B' /%3E%3C/svg%3E");
 				}
 
 				.wrapper.spotlight.style6:before {
-					box-shadow: inset 0 -1px 0 0 #b4e5cf, 0 1px 0 0 #b4e5cf;
+					box-shadow: inset 0 -1px 0 0 #96c5b0, 0 1px 0 0 #96c5b0;
 				}
 
 				.wrapper.spotlight.style6:after {
-					box-shadow: inset 0 -1px 0 0 #b4e5cf, 0 1px 0 0 #b4e5cf;
+					box-shadow: inset 0 -1px 0 0 #96c5b0, 0 1px 0 0 #96c5b0;
 				}
 
 		@media screen and (max-width: 980px) {
