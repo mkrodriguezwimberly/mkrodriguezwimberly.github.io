@@ -1644,7 +1644,7 @@
 /* Type */
 
 	body, input, select, textarea {
-		color: #ffffff;
+		color: #000000;
 		font-family: "Source Sans Pro", Helvetica, sans-serif;
 		font-size: 16.5pt;
 		font-weight: 300;
@@ -1697,13 +1697,13 @@
 		-ms-transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
 		transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
 		border-bottom: dotted 1px rgba(0, 0, 0, 0.35);
-		color: #ffffff;
+		color: #000000;
 		text-decoration: none;
 	}
 
 		a:hover {
 			border-bottom-color: transparent;
-			color: #ffffff !important;
+			color: #000000 !important;
 		}
 
 		a.special:not(.button) {
@@ -1755,7 +1755,7 @@
 			}
 
 	strong, b {
-		color: #ffffff;
+		color: #000000;
 		font-weight: 600;
 	}
 
@@ -1768,7 +1768,7 @@
 	}
 
 	h1, h2, h3, h4, h5, h6 {
-		color: #ffffff;
+		color: #000000;
 		font-family: Raleway, Helvetica, sans-serif;
 		font-weight: 700;
 		letter-spacing: 0.1em;
@@ -1916,7 +1916,7 @@
 		}
 
 	label {
-		color: #ffffff;
+		color: #000000;
 		display: block;
 		font-family: Raleway, Helvetica, sans-serif;
 		font-size: 0.8em;
@@ -2000,7 +2000,7 @@
 		}
 
 	select option {
-		color: #ffffff;
+		color: #000000;
 		background: #644a74;
 	}
 
@@ -2032,7 +2032,7 @@
 		input[type="checkbox"] + label,
 		input[type="radio"] + label {
 			text-decoration: none;
-			color: #ffffff;
+			color: #000000;
 			cursor: pointer;
 			display: inline-block;
 			font-size: 1em;
@@ -2073,8 +2073,8 @@
 
 		input[type="checkbox"]:checked + label:before,
 		input[type="radio"]:checked + label:before {
-			background: #ffffff;
-			border-color: #ffffff;
+			background: #000000;
+			border-color: #000000;
 			content: '\f00c';
 			color: #644a74;
 		}
@@ -2524,7 +2524,7 @@
 		}
 
 		table th {
-			color: #ffffff;
+			color: #000000;
 			font-size: 0.9em;
 			font-weight: 600;
 			padding: 0 0.75em 0.75em 0.75em;
@@ -2584,7 +2584,7 @@
 		border-radius: 5px;
 		border: 0;
 		box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.125);
-		color: #ffffff !important;
+		color: #000000 !important;
 		cursor: pointer;
 		display: inline-block;
 		font-family: Raleway, Helvetica, sans-serif;
