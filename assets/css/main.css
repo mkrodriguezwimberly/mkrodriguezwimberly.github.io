@@ -2795,7 +2795,7 @@
 		-webkit-transition: background-color 0.2s ease-in-out;
 		-ms-transition: background-color 0.2s ease-in-out;
 		transition: background-color 0.2s ease-in-out;
-		background-color: rgba(53, 56, 73, 0.95);
+		background-color: rgba(100, 74, 116, 0.95);
 		height: 3.5em;
 		left: 0;
 		line-height: 3.5em;
@@ -2975,7 +2975,7 @@
 		-ms-user-select: none;
 		user-select: none;
 		-webkit-tap-highlight-color: transparent;
-		background: rgba(96, 76, 113, 0.8);
+		background: rgba(100, 74, 116, 0.8);
 		cursor: default;
 		height: 100%;
 		left: 0;
