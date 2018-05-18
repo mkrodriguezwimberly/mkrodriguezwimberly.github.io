@@ -2846,7 +2846,7 @@
 					margin-left: 0.75em;
 				}
 
-				#header nav a[href="menu"] {
+				#header nav a[href="#menu"] {
 					text-decoration: none;
 					-moz-transition: background-color 0.2s ease-in-out;
 					-webkit-transition: background-color 0.2s ease-in-out;
@@ -2857,7 +2857,7 @@
 					padding: 0 1.35em;
 				}
 
-					#header nav a[href="menu"]:before {
+					#header nav a[href="#menu"]:before {
 						-moz-osx-font-smoothing: grayscale;
 						-webkit-font-smoothing: antialiased;
 						font-family: FontAwesome;
@@ -2866,15 +2866,15 @@
 						text-transform: none !important;
 					}
 
-					#header nav a[href="menu"]:before {
+					#header nav a[href="#menu"]:before {
 						content: '\f0c9';
 					}
 
-					#header nav a[href="menu"]:hover {
+					#header nav a[href="#menu"]:hover {
 						background-color: rgba(255, 255, 255, 0.025);
 					}
 
-					#header nav a[href="menu"]:active {
+					#header nav a[href="#menu"]:active {
 						background-color: rgba(255, 255, 255, 0.075);
 					}
 
@@ -2906,13 +2906,13 @@
 						line-height: inherit;
 					}
 
-						#header nav a[href="menu"] {
+						#header nav a[href="#menu"] {
 							box-shadow: none;
 							padding: 0 1em;
 							border-radius: 0;
 						}
 
-							#header nav a[href="menu"]:hover, #header nav a[href="menu"]:active {
+							#header nav a[href="#menu"]:hover, #header nav a[href="#menu"]:active {
 								background-color: inherit;
 							}
 
@@ -2920,14 +2920,14 @@
 
 		@media screen and (max-width: 640px) {
 
-			#header nav a[href="menu"] {
+			#header nav a[href="#menu"] {
 				width: 4em;
 				white-space: nowrap;
 				text-indent: 4em;
 				position: relative;
 			}
 
-				#header nav a[href="menu"]:before {
+				#header nav a[href="#menu"]:before {
 					width: inherit;
 					position: absolute;
 					top: 0;
