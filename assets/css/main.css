@@ -2846,7 +2846,7 @@
 					margin-left: 0.75em;
 				}
 
-				#header nav a[href="#menu"] {
+				#header nav a[href="menu"] {
 					text-decoration: none;
 					-moz-transition: background-color 0.2s ease-in-out;
 					-webkit-transition: background-color 0.2s ease-in-out;
@@ -2857,7 +2857,7 @@
 					padding: 0 1.35em;
 				}
 
-					#header nav a[href="#menu"]:before {
+					#header nav a[href="menu"]:before {
 						-moz-osx-font-smoothing: grayscale;
 						-webkit-font-smoothing: antialiased;
 						font-family: FontAwesome;
@@ -2866,15 +2866,15 @@
 						text-transform: none !important;
 					}
 
-					#header nav a[href="#menu"]:before {
+					#header nav a[href="menu"]:before {
 						content: '\f0c9';
 					}
 
-					#header nav a[href="#menu"]:hover {
+					#header nav a[href="menu"]:hover {
 						background-color: rgba(255, 255, 255, 0.025);
 					}
 
-					#header nav a[href="#menu"]:active {
+					#header nav a[href="menu"]:active {
 						background-color: rgba(255, 255, 255, 0.075);
 					}
 
@@ -2906,13 +2906,13 @@
 						line-height: inherit;
 					}
 
-						#header nav a[href="#menu"] {
+						#header nav a[href="menu"] {
 							box-shadow: none;
 							padding: 0 1em;
 							border-radius: 0;
 						}
 
-							#header nav a[href="#menu"]:hover, #header nav a[href="#menu"]:active {
+							#header nav a[href="menu"]:hover, #header nav a[href="menu"]:active {
 								background-color: inherit;
 							}
 
@@ -2920,14 +2920,14 @@
 
 		@media screen and (max-width: 640px) {
 
-			#header nav a[href="#menu"] {
+			#header nav a[href="menu"] {
 				width: 4em;
 				white-space: nowrap;
 				text-indent: 4em;
 				position: relative;
 			}
 
-				#header nav a[href="#menu"]:before {
+				#header nav a[href="menu"]:before {
 					width: inherit;
 					position: absolute;
 					top: 0;
@@ -2942,14 +2942,14 @@
 
 /* Menu */
 
-	#page-wrapper {
+	page-wrapper {
 		-moz-transition: -moz-filter 0.25s ease;
 		-webkit-transition: -webkit-filter 0.25s ease;
 		-ms-transition: -ms-filter 0.25s ease;
 		transition: filter 0.25s ease;
 	}
 
-	#menu {
+	menu {
 		-moz-align-items: center;
 		-webkit-align-items: center;
 		-ms-align-items: center;
@@ -2987,7 +2987,7 @@
 		width: 100%;
 	}
 
-		#menu .inner {
+		menu .inner {
 			padding: 2.5em 1.5em 0.5em 1.5em ;
 			-moz-transform: translateY(0.5em);
 			-webkit-transform: translateY(0.5em);
@@ -3007,12 +3007,12 @@
 			width: 18em;
 		}
 
-		#menu h2 {
+		menu h2 {
 			border-bottom: solid 2px rgba(255, 255, 255, 0.125);
 			padding-bottom: 1em;
 		}
 
-		#menu .close {
+		menu .close {
 			background-image: url("images/close.svg");
 			background-position: 75% 25%;
 			background-repeat: no-repeat;
@@ -3030,17 +3030,17 @@
 			width: 4em;
 		}
 
-		#menu .links {
+		menu .links {
 			list-style: none;
 			margin-bottom: 1.5em;
 			padding: 0;
 		}
 
-			#menu .links li {
+			menu .links li {
 				padding: 0;
 			}
 
-				#menu .links li a {
+				menu .links li a {
 					border-radius: 5px;
 					border: 0;
 					display: block;
@@ -3053,19 +3053,19 @@
 					text-transform: uppercase;
 				}
 
-					#menu .links li a:hover {
+					menu .links li a:hover {
 						background: #f39f79;
 					}
 
 		@media screen and (max-width: 736px) {
 
-			#menu .inner {
+			menu .inner {
 				max-height: 100%;
 				overflow-y: auto;
 				overflow-x: hidden;
 			}
 
-				#menu .inner .close {
+				menu .inner .close {
 					background-size: 1.5em 1.5em;
 				}
 
@@ -3078,7 +3078,7 @@
 		filter: blur(1.5px);
 	}
 
-	body.is-menu-visible #menu {
+	body.is-menu-visible menu {
 		-moz-pointer-events: auto;
 		-webkit-pointer-events: auto;
 		-ms-pointer-events: auto;
@@ -3087,7 +3087,7 @@
 		visibility: visible;
 	}
 
-		body.is-menu-visible #menu .inner {
+		body.is-menu-visible menu .inner {
 			-moz-transform: translateY(0);
 			-webkit-transform: translateY(0);
 			-ms-transform: translateY(0);
