@@ -1081,7 +1081,7 @@ input, select, textarea {
           height: 100vh;
           background-size: cover;
           background-position: center;
-          background-repeat: no-repeat;
+          background-repeat: repeat;
           z-index: -1; /* Keep it behind everything */
         }
 	/* Header */
