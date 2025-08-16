@@ -1053,7 +1053,7 @@ input, select, textarea {
 			}
 		}
 
-		@keyframes bg {
+        /* @keyframes bg {
 			0% {
 				-moz-transform: translate3d(0,0,0);
 				-webkit-transform: translate3d(0,0,0);
@@ -1067,7 +1067,12 @@ input, select, textarea {
 				-ms-transform: translate3d(-412.5px,0,0);
 				transform: translate3d(-412.5px,0,0);
 			}
-		}
+		} */
+        
+        @keyframes bg {
+            0% { transform: none; }
+            100% { transform: none; }
+          }
 
         /* #bg {
 			background-size: 412.5px auto;
@@ -1079,8 +1084,8 @@ input, select, textarea {
           left: 0;
           width: 100vw;
           height: 100vh;
-          background-size: auto;
-          background-position: top left;
+          background-size: cover;
+          background-position: center;
           background-repeat: repeat;
           z-index: -1; /* Keep it behind everything */
         }
