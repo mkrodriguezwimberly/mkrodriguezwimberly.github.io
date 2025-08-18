@@ -283,7 +283,7 @@ input, select, textarea {
 		}
 	}
 
-	@keyframes bg {
+	/*@keyframes bg {
 		0% {
 			-moz-transform: translate3d(0,0,0);
 			-webkit-transform: translate3d(0,0,0);
@@ -302,7 +302,25 @@ input, select, textarea {
 	#bg {
 		background-size: 2250px auto;
 		width: 6750px;
-	}
+	} */
+
+    @keyframes bg {
+        0% { transform: none; }
+        100% { transform: none; }
+    }
+
+    #bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-size: cover;
+        background-position: center;
+        background-repeat: repeat;
+        z-index: -1; /* Keep it behind everything */
+    }
+
 
 /* Overlay */
 
@@ -787,7 +805,7 @@ input, select, textarea {
 			}
 		}
 
-		@keyframes bg {
+		/* @keyframes bg {
 			0% {
 				-moz-transform: translate3d(0,0,0);
 				-webkit-transform: translate3d(0,0,0);
@@ -806,7 +824,26 @@ input, select, textarea {
 		#bg {
 			background-size: 1500px auto;
 			width: 4500px;
-		} }
+		} */
+        
+        @keyframes bg {
+            0% { transform: none; }
+            100% { transform: none; }
+          }
+        
+        #bg {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+          background-size: cover;
+          background-position: center;
+          background-repeat: repeat;
+          z-index: -1; /* Keep it behind everything */
+        }
+
+    }
 
 /* Normal */
 
@@ -869,7 +906,7 @@ input, select, textarea {
 			}
 		}
 
-		@keyframes bg {
+		/* @keyframes bg {
 			0% {
 				-moz-transform: translate3d(0,0,0);
 				-webkit-transform: translate3d(0,0,0);
@@ -888,7 +925,26 @@ input, select, textarea {
 		#bg {
 			background-size: 750px auto;
 			width: 2250px;
-		} }
+		} */
+        
+        @keyframes bg {
+            0% { transform: none; }
+            100% { transform: none; }
+          }
+        
+        #bg {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+          background-size: cover;
+          background-position: center;
+          background-repeat: repeat;
+          z-index: -1; /* Keep it behind everything */
+        }
+
+    }
 
 /* Mobile */
 
@@ -955,7 +1011,7 @@ input, select, textarea {
 			}
 		}
 
-		@keyframes bg {
+		/* @keyframes bg {
 			0% {
 				-moz-transform: translate3d(0,0,0);
 				-webkit-transform: translate3d(0,0,0);
@@ -974,7 +1030,25 @@ input, select, textarea {
 		#bg {
 			background-size: 300px auto;
 			width: 900px;
-		}
+		} */
+        
+        @keyframes bg {
+            0% { transform: none; }
+            100% { transform: none; }
+          }
+        
+        #bg {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+          background-size: cover;
+          background-position: center;
+          background-repeat: repeat;
+          z-index: -1; /* Keep it behind everything */
+        }
+
 
 	/* Header */
 
