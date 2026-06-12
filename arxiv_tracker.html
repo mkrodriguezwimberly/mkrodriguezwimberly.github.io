@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>arXiv Tracker</title>
+<style>
+  :root {
+    --bg: #0d0f14;
+    --surface: #151820;
+    --surface2: #1c2030;
+    --border: #252a38;
+    --text: #e8eaf0;
+    --text-muted: #6b7280;
+    --text-dim: #9ca3af;
+    --accent: #7c9cff;
+    --accent-dim: #2a3558;
+    --read: #34d399;
+    --read-dim: #0d3326;
+    --use: #f59e0b;
+    --use-dim: #3a2a00;
+    --dive: #a78bfa;
+    --dive-dim: #2d1f4a;
+    --pulse: #38bdf8;
+    --pulse-dim: #0a2a3a;
+    --skim: #f472b6;
+    --skim-dim: #3a0a24;
+    --danger: #f87171;
+    --font-mono: 'SF Mono', 'Fira Code', monospace;
+    --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --radius: 8px;
+    --transition: 0.15s ease;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  /* ── Layout ── */
+  .app { display: flex; flex-direction: column; min-height: 100vh; }
+
+  header {
+    border-bottom: 1px solid var(--border);
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    z-index: 100;
+  }
+
+  .header-left { display: flex; align-items: center; gap: 12px; }
+
+  .logo {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .paper-count {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+  }
+
+  .header-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+
+  main {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    flex: 1;
+    min-height: 0;
+  }
+
+  /* ── Sidebar ── */
+  aside {
+    border-right: 1px solid var(--border);
+    padding: 20px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    overflow-y: auto;
+    position: sticky;
+    top: 57px;
+    height: calc(100vh - 57px);
+  }
+
+  .sidebar-section h3 {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+
+  .filter-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 7px 10px;
+    border-radius: var(--radius);
+    border: none;
+    background: transparent;
+    color: var(--text-dim);
+    cursor: pointer;
+    font-size: 13px;
+    font-family: var(--font);
+    transition: background var(--transition);
+    text-align: left;
+  }
+
+  .filter-btn:hover { background: var(--surface2); }
+  .filter-btn.active { background: var(--accent-dim); color: var(--accent); }
+
+  .filter-btn .count {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    min-width: 20px;
+    text-align: right;
+  }
+
+  .status-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-right: 8px;
+  }
+
+  .dot-all { background: var(--text-muted); }
+  .dot-skim { background: var(--skim); }
+  .dot-read { background: var(--read); }
+  .dot-use { background: var(--use); }
+  .dot-dive { background: var(--dive); }
+  .dot-pulse { background: var(--pulse); }
+
+  .tag-cloud { display: flex; flex-wrap: wrap; gap: 6px; }
+
+  .tag-chip {
+    padding: 3px 9px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-family: var(--font-mono);
+    cursor: pointer;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text-dim);
+    transition: all var(--transition);
+  }
+
+  .tag-chip:hover { border-color: var(--accent); color: var(--accent); }
+  .tag-chip.active { border-color: var(--accent); background: var(--accent-dim); color: var(--accent); }
+
+  /* ── Content area ── */
+  .content { padding: 20px 24px; overflow-y: auto; }
+
+  /* ── Search bar ── */
+  .search-bar {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .search-bar input {
+    flex: 1;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 8px 12px;
+    color: var(--text);
+    font-size: 13px;
+    font-family: var(--font);
+    outline: none;
+    transition: border-color var(--transition);
+  }
+
+  .search-bar input:focus { border-color: var(--accent); }
+  .search-bar input::placeholder { color: var(--text-muted); }
+
+  /* ── Buttons ── */
+  .btn {
+    padding: 8px 14px;
+    border-radius: var(--radius);
+    border: none;
+    cursor: pointer;
+    font-size: 13px;
+    font-family: var(--font);
+    font-weight: 500;
+    transition: all var(--transition);
+    white-space: nowrap;
+  }
+
+  .btn-primary { background: var(--accent); color: #0a0d14; }
+  .btn-primary:hover { background: #9ab0ff; }
+
+  .btn-ghost {
+    background: var(--surface);
+    color: var(--text-dim);
+    border: 1px solid var(--border);
+  }
+  .btn-ghost:hover { background: var(--surface2); color: var(--text); }
+
+  .btn-danger { background: transparent; color: var(--danger); border: 1px solid transparent; }
+  .btn-danger:hover { border-color: var(--danger); background: rgba(248,113,113,0.08); }
+
+  .btn-sm { padding: 5px 10px; font-size: 12px; }
+
+  /* ── Paper cards ── */
+  .papers-list { display: flex; flex-direction: column; gap: 12px; }
+
+  .paper-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px;
+    transition: border-color var(--transition);
+  }
+
+  .paper-card:hover { border-color: #353d55; }
+
+  .paper-card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+
+  .paper-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.4;
+    flex: 1;
+  }
+
+  .paper-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+
+  .arxiv-id {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .arxiv-id:hover { text-decoration: underline; }
+
+  .paper-authors {
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  .paper-date {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+  }
+
+  .status-badge {
+    padding: 3px 9px;
+    border-radius: 10px;
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .badge-read { background: var(--read-dim); color: var(--read); }
+  .badge-skim { background: var(--skim-dim); color: var(--skim); }
+  .badge-use { background: var(--use-dim); color: var(--use); }
+  .badge-dive { background: var(--dive-dim); color: var(--dive); }
+  .badge-pulse { background: var(--pulse-dim); color: var(--pulse); }
+
+  .paper-note {
+    font-size: 12px;
+    color: var(--text-dim);
+    font-style: italic;
+    margin-bottom: 8px;
+    line-height: 1.5;
+  }
+
+  .paper-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 10px; }
+
+  .paper-tag {
+    padding: 2px 7px;
+    border-radius: 8px;
+    font-size: 11px;
+    font-family: var(--font-mono);
+    background: var(--surface2);
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+  }
+
+  .paper-actions {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    padding-top: 8px;
+    border-top: 1px solid var(--border);
+  }
+
+  .paper-actions .spacer { flex: 1; }
+
+  /* ── Modal ── */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .modal {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    width: 100%;
+    max-width: 560px;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  .modal h2 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: var(--text);
+  }
+
+  .form-group { margin-bottom: 16px; }
+
+  .form-group label {
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    width: 100%;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 8px 12px;
+    color: var(--text);
+    font-size: 13px;
+    font-family: var(--font);
+    outline: none;
+    transition: border-color var(--transition);
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus { border-color: var(--accent); }
+
+  .form-group textarea { resize: vertical; min-height: 72px; }
+
+  .form-group select option { background: var(--surface); }
+
+  .status-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .status-option {
+    padding: 10px 12px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: all var(--transition);
+    text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .status-option:hover { border-color: var(--text-muted); }
+  .status-option.selected-read { border-color: var(--read); background: var(--read-dim); color: var(--read); }
+  .status-option.selected-skim { border-color: var(--skim); background: var(--skim-dim); color: var(--skim); }
+  .status-option.selected-use { border-color: var(--use); background: var(--use-dim); color: var(--use); }
+  .status-option.selected-dive { border-color: var(--dive); background: var(--dive-dim); color: var(--dive); }
+  .status-option.selected-pulse { border-color: var(--pulse); background: var(--pulse-dim); color: var(--pulse); }
+
+  .tag-input-row {
+    display: flex;
+    gap: 8px;
+  }
+
+  .tag-input-row input { flex: 1; }
+
+  .form-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+
+  .form-tag {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 8px;
+    border-radius: 8px;
+    background: var(--accent-dim);
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    font-size: 11px;
+    font-family: var(--font-mono);
+  }
+
+  .form-tag button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--accent);
+    font-size: 13px;
+    line-height: 1;
+    padding: 0;
+    opacity: 0.7;
+  }
+
+  .form-tag button:hover { opacity: 1; }
+
+  .modal-actions {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+  }
+
+  /* ── Empty state ── */
+  .empty {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text-muted);
+  }
+
+  .empty .empty-icon { font-size: 40px; margin-bottom: 16px; opacity: 0.5; }
+  .empty h3 { font-size: 16px; margin-bottom: 8px; color: var(--text-dim); }
+  .empty p { font-size: 13px; max-width: 320px; margin: 0 auto; line-height: 1.6; }
+
+  /* ── Toast ── */
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 10px 16px;
+    font-size: 13px;
+    color: var(--text);
+    z-index: 300;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: all 0.2s ease;
+    pointer-events: none;
+  }
+
+  .toast.show { opacity: 1; transform: translateY(0); }
+  .toast.success { border-color: var(--read); color: var(--read); }
+  .toast.error { border-color: var(--danger); color: var(--danger); }
+
+  /* ── Fetching indicator ── */
+  .fetch-status {
+    font-size: 12px;
+    color: var(--accent);
+    margin-top: 6px;
+    min-height: 18px;
+    font-family: var(--font-mono);
+  }
+
+  /* ── Abstract preview ── */
+  .abstract-preview {
+    font-size: 12px;
+    color: var(--text-dim);
+    line-height: 1.6;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 10px 12px;
+    margin-top: 8px;
+    max-height: 100px;
+    overflow-y: auto;
+    display: none;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 680px) {
+    main { grid-template-columns: 1fr; }
+    aside {
+      position: static;
+      height: auto;
+      border-right: none;
+      border-bottom: 1px solid var(--border);
+      padding: 16px;
+    }
+    .content { padding: 16px; }
+    .status-options { grid-template-columns: 1fr 1fr; }
+    header { padding: 12px 16px; }
+  }
+
+  .hidden { display: none !important; }
+
+  .abstract-full {
+    font-size: 12px;
+    color: var(--text-dim);
+    line-height: 1.6;
+    margin-top: 8px;
+    display: none;
+  }
+
+  .toggle-abstract {
+    background: none;
+    border: none;
+    color: var(--accent);
+    font-size: 11px;
+    cursor: pointer;
+    padding: 0;
+    font-family: var(--font);
+    margin-top: 4px;
+  }
+
+  .toggle-abstract:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="app">
+
+  <!-- Header -->
+  <header>
+    <div class="header-left">
+      <span class="logo">★ arXiv Tracker</span>
+      <span class="paper-count" id="paperCount">0 papers</span>
+    </div>
+    <div class="header-actions">
+      <button class="btn btn-ghost btn-sm" id="loadBtn">Load Data</button>
+      <button class="btn btn-ghost btn-sm" id="saveBtn">Save Data</button>
+      <button class="btn btn-primary btn-sm" id="addBtn">+ Add Paper</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Sidebar -->
+    <aside>
+      <div class="sidebar-section">
+        <h3>Status</h3>
+        <button class="filter-btn active" data-filter="all">
+          <span style="display:flex;align-items:center;gap:8px;">
+            <span class="status-dot dot-all"></span>All papers
+          </span>
+          <span class="count" id="count-all">0</span>
+        </button>
+        <button class="filter-btn" data-filter="skim">
+          <span style="display:flex;align-items:center;gap:8px;">
+            <span class="status-dot dot-skim"></span>Skimmed
+          </span>
+          <span class="count" id="count-skim">0</span>
+        </button>
+        <button class="filter-btn" data-filter="read">
+          <span style="display:flex;align-items:center;gap:8px;">
+            <span class="status-dot dot-read"></span>Read
+          </span>
+          <span class="count" id="count-read">0</span>
+        </button>
+        <button class="filter-btn" data-filter="use">
+          <span style="display:flex;align-items:center;gap:8px;">
+            <span class="status-dot dot-use"></span>Use Later
+          </span>
+          <span class="count" id="count-use">0</span>
+        </button>
+        <button class="filter-btn" data-filter="dive">
+          <span style="display:flex;align-items:center;gap:8px;">
+            <span class="status-dot dot-dive"></span>Dive Deeper
+          </span>
+          <span class="count" id="count-dive">0</span>
+        </button>
+        <button class="filter-btn" data-filter="pulse">
+          <span style="display:flex;align-items:center;gap:8px;">
+            <span class="status-dot dot-pulse"></span>Field Pulse
+          </span>
+          <span class="count" id="count-pulse">0</span>
+        </button>
+      </div>
+
+      <div class="sidebar-section">
+        <h3>Tags</h3>
+        <div class="tag-cloud" id="tagCloud">
+          <span style="font-size:12px;color:var(--text-muted);">No tags yet</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Content -->
+    <div class="content">
+      <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search titles, authors, notes, tags…">
+      </div>
+      <div class="papers-list" id="papersList"></div>
+    </div>
+  </main>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <!-- Add/Edit Modal -->
+  <div class="modal-overlay hidden" id="modalOverlay">
+    <div class="modal">
+      <h2 id="modalTitle">Add Paper</h2>
+
+      <div class="form-group">
+        <label>arXiv ID or URL</label>
+        <div style="display:flex;gap:8px;">
+          <input type="text" id="arxivInput" placeholder="e.g. 2401.12345 or arxiv.org/abs/2401.12345">
+          <button class="btn btn-ghost btn-sm" id="fetchBtn">Fetch</button>
+        </div>
+        <div class="fetch-status" id="fetchStatus"></div>
+        <div class="abstract-preview" id="abstractPreview"></div>
+      </div>
+
+      <div class="form-group">
+        <label>Title</label>
+        <input type="text" id="titleInput" placeholder="Paper title">
+      </div>
+
+      <div class="form-group">
+        <label>Authors</label>
+        <input type="text" id="authorsInput" placeholder="First author et al.">
+      </div>
+
+      <div class="form-group">
+        <label>Year</label>
+        <input type="text" id="yearInput" placeholder="2024">
+      </div>
+
+      <div class="form-group">
+        <label>Status</label>
+        <div class="status-options">
+          <div class="status-option" data-status="skim">~ Skimmed</div>
+          <div class="status-option" data-status="read">✓ Read</div>
+          <div class="status-option" data-status="use">↗ Use Later</div>
+          <div class="status-option" data-status="dive">⬇ Dive Deeper</div>
+          <div class="status-option" data-status="pulse">◎ Field Pulse</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Tags</label>
+        <div class="tag-input-row">
+          <input type="text" id="tagInput" placeholder="e.g. ufd, rr-lyrae, methods">
+          <button class="btn btn-ghost btn-sm" id="addTagBtn">Add</button>
+        </div>
+        <div class="form-tags" id="formTags"></div>
+      </div>
+
+      <div class="form-group">
+        <label>Quick Note</label>
+        <textarea id="noteInput" placeholder="One sentence — why does this paper matter to you?"></textarea>
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn btn-ghost" id="cancelBtn">Cancel</button>
+        <button class="btn btn-primary" id="saveEntryBtn">Save Paper</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// ── State ──
+let papers = [];
+let activeFilter = 'all';
+let activeTag = null;
+let editingId = null;
+let formTags = [];
+let selectedStatus = null;
+
+// ── Utilities ──
+function uid() {
+  return Date.now().toString(36) + Math.random().toString(36).slice(2);
+}
+
+function cleanArxivId(input) {
+  input = input.trim();
+  const match = input.match(/(\d{4}\.\d{4,5}(v\d+)?)/);
+  return match ? match[1] : null;
+}
+
+function showToast(msg, type = '') {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast show' + (type ? ' ' + type : '');
+  setTimeout(() => t.className = 'toast', 2500);
+}
+
+// ── arXiv fetch ──
+async function fetchArxiv(id) {
+  const cleanId = cleanArxivId(id);
+  if (!cleanId) return null;
+  const url = `https://export.arxiv.org/abs/${cleanId}`;
+  try {
+    const res = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(url)}`);
+    const data = await res.json();
+    const html = data.contents;
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
+
+    const title = doc.querySelector('h1.title')?.textContent?.replace('Title:', '').trim() || '';
+    const authorsEl = doc.querySelectorAll('.authors a');
+    const authors = authorsEl.length ? Array.from(authorsEl).map(a => a.textContent.trim()).join(', ') : '';
+    const abstract = doc.querySelector('blockquote.abstract')?.textContent?.replace('Abstract:', '').trim() || '';
+    const dateEl = doc.querySelector('.dateline')?.textContent || '';
+    const yearMatch = dateEl.match(/\d{4}/);
+    const year = yearMatch ? yearMatch[0] : '';
+
+    return { id: cleanId, title, authors, abstract, year };
+  } catch (e) {
+    return null;
+  }
+}
+
+// ── Render ──
+function getStatusLabel(s) {
+  return { skim: '~ Skimmed', read: '✓ Read', use: '↗ Use Later', dive: '⬇ Dive Deeper', pulse: '◎ Field Pulse' }[s] || s;
+}
+
+function getBadgeClass(s) {
+  return { skim: 'badge-skim', read: 'badge-read', use: 'badge-use', dive: 'badge-dive', pulse: 'badge-pulse' }[s] || '';
+}
+
+function filtered() {
+  let list = [...papers];
+  if (activeFilter !== 'all') list = list.filter(p => p.status === activeFilter);
+  if (activeTag) list = list.filter(p => p.tags && p.tags.includes(activeTag));
+  const q = document.getElementById('searchInput').value.toLowerCase().trim();
+  if (q) list = list.filter(p =>
+    p.title?.toLowerCase().includes(q) ||
+    p.authors?.toLowerCase().includes(q) ||
+    p.note?.toLowerCase().includes(q) ||
+    p.tags?.some(t => t.toLowerCase().includes(q))
+  );
+  return list.sort((a, b) => b.added - a.added);
+}
+
+function renderPapers() {
+  const list = filtered();
+  const el = document.getElementById('papersList');
+  if (!list.length) {
+    el.innerHTML = `<div class="empty">
+      <div class="empty-icon">◎</div>
+      <h3>${papers.length ? 'No papers match this filter' : 'No papers yet'}</h3>
+      <p>${papers.length ? 'Try a different status or tag.' : 'Add your first paper, or load an existing data file.'}</p>
+    </div>`;
+    return;
+  }
+  el.innerHTML = list.map(p => `
+    <div class="paper-card">
+      <div class="paper-card-header">
+        <div class="paper-title">${escHtml(p.title || 'Untitled')}</div>
+        <span class="status-badge ${getBadgeClass(p.status)}">${getStatusLabel(p.status)}</span>
+      </div>
+      <div class="paper-meta">
+        ${p.arxivId ? `<a class="arxiv-id" href="https://arxiv.org/abs/${escHtml(p.arxivId)}" target="_blank">${escHtml(p.arxivId)}</a>` : ''}
+        ${p.authors ? `<span class="paper-authors">${escHtml(p.authors)}</span>` : ''}
+        ${p.year ? `<span class="paper-date">${escHtml(p.year)}</span>` : ''}
+        <span class="paper-date">${new Date(p.added).toLocaleDateString('en-US', {month:'short',day:'numeric',year:'numeric'})}</span>
+      </div>
+      ${p.note ? `<div class="paper-note">"${escHtml(p.note)}"</div>` : ''}
+      ${p.tags?.length ? `<div class="paper-tags">${p.tags.map(t => `<span class="paper-tag">${escHtml(t)}</span>`).join('')}</div>` : ''}
+      ${p.abstract ? `
+        <button class="toggle-abstract" onclick="toggleAbstract('${p.id}')">Show abstract</button>
+        <div class="abstract-full" id="abs-${p.id}">${escHtml(p.abstract)}</div>
+      ` : ''}
+      <div class="paper-actions">
+        <button class="btn btn-ghost btn-sm" onclick="editPaper('${p.id}')">Edit</button>
+        <select class="btn btn-ghost btn-sm" onchange="changeStatus('${p.id}', this.value)" style="cursor:pointer;">
+          <option value="">Move to…</option>
+          <option value="skim">~ Skimmed</option>
+          <option value="read">✓ Read</option>
+          <option value="use">↗ Use Later</option>
+          <option value="dive">⬇ Dive Deeper</option>
+          <option value="pulse">◎ Field Pulse</option>
+        </select>
+        <span class="spacer"></span>
+        <button class="btn btn-danger btn-sm" onclick="deletePaper('${p.id}')">Delete</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function toggleAbstract(id) {
+  const el = document.getElementById(`abs-${id}`);
+  const btn = el.previousElementSibling;
+  if (el.style.display === 'block') {
+    el.style.display = 'none';
+    btn.textContent = 'Show abstract';
+  } else {
+    el.style.display = 'block';
+    btn.textContent = 'Hide abstract';
+  }
+}
+
+function escHtml(str) {
+  return String(str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function renderCounts() {
+  const counts = { all: papers.length, skim: 0, read: 0, use: 0, dive: 0, pulse: 0 };
+  papers.forEach(p => { if (counts[p.status] !== undefined) counts[p.status]++; });
+  Object.keys(counts).forEach(k => {
+    const el = document.getElementById(`count-${k}`);
+    if (el) el.textContent = counts[k];
+  });
+  document.getElementById('paperCount').textContent = `${papers.length} paper${papers.length !== 1 ? 's' : ''}`;
+}
+
+function renderTags() {
+  const tagMap = {};
+  papers.forEach(p => (p.tags || []).forEach(t => { tagMap[t] = (tagMap[t] || 0) + 1; }));
+  const cloud = document.getElementById('tagCloud');
+  const tags = Object.keys(tagMap).sort();
+  if (!tags.length) {
+    cloud.innerHTML = '<span style="font-size:12px;color:var(--text-muted);">No tags yet</span>';
+    return;
+  }
+  cloud.innerHTML = tags.map(t =>
+    `<span class="tag-chip${activeTag === t ? ' active' : ''}" onclick="filterByTag('${escHtml(t)}')">${escHtml(t)} <span style="opacity:0.5;font-size:10px;">${tagMap[t]}</span></span>`
+  ).join('');
+}
+
+function renderAll() {
+  renderCounts();
+  renderTags();
+  renderPapers();
+}
+
+// ── Filter actions ──
+function filterByTag(tag) {
+  activeTag = activeTag === tag ? null : tag;
+  renderAll();
+}
+
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activeFilter = btn.dataset.filter;
+    renderAll();
+  });
+});
+
+document.getElementById('searchInput').addEventListener('input', renderPapers);
+
+// ── Paper actions ──
+function changeStatus(id, status) {
+  if (!status) return;
+  const p = papers.find(x => x.id === id);
+  if (p) { p.status = status; renderAll(); showToast('Status updated', 'success'); }
+}
+
+function deletePaper(id) {
+  if (!confirm('Delete this paper?')) return;
+  papers = papers.filter(x => x.id !== id);
+  renderAll();
+  showToast('Paper deleted');
+}
+
+function editPaper(id) {
+  const p = papers.find(x => x.id === id);
+  if (!p) return;
+  editingId = id;
+  openModal(p);
+}
+
+// ── Modal ──
+function openModal(prefill = null) {
+  selectedStatus = prefill?.status || null;
+  formTags = [...(prefill?.tags || [])];
+
+  document.getElementById('modalTitle').textContent = prefill && editingId ? 'Edit Paper' : 'Add Paper';
+  document.getElementById('arxivInput').value = prefill?.arxivId || '';
+  document.getElementById('titleInput').value = prefill?.title || '';
+  document.getElementById('authorsInput').value = prefill?.authors || '';
+  document.getElementById('yearInput').value = prefill?.year || '';
+  document.getElementById('noteInput').value = prefill?.note || '';
+  document.getElementById('tagInput').value = '';
+  document.getElementById('fetchStatus').textContent = '';
+  document.getElementById('abstractPreview').style.display = 'none';
+
+  if (prefill?.abstract) {
+    document.getElementById('abstractPreview').textContent = prefill.abstract;
+    document.getElementById('abstractPreview').style.display = 'block';
+  }
+
+  renderStatusOptions();
+  renderFormTags();
+  document.getElementById('modalOverlay').classList.remove('hidden');
+  document.getElementById('arxivInput').focus();
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').classList.add('hidden');
+  editingId = null;
+  selectedStatus = null;
+  formTags = [];
+}
+
+function renderStatusOptions() {
+  document.querySelectorAll('.status-option').forEach(el => {
+    el.className = 'status-option';
+    if (el.dataset.status === selectedStatus) el.classList.add(`selected-${selectedStatus}`);
+    el.onclick = () => {
+      selectedStatus = el.dataset.status;
+      renderStatusOptions();
+    };
+  });
+}
+
+function renderFormTags() {
+  const el = document.getElementById('formTags');
+  el.innerHTML = formTags.map(t =>
+    `<span class="form-tag">${escHtml(t)}<button onclick="removeFormTag('${escHtml(t)}')">×</button></span>`
+  ).join('');
+}
+
+function removeFormTag(tag) {
+  formTags = formTags.filter(t => t !== tag);
+  renderFormTags();
+}
+
+function addFormTag() {
+  const input = document.getElementById('tagInput');
+  const raw = input.value.trim().toLowerCase().replace(/\s+/g, '-');
+  if (raw && !formTags.includes(raw)) { formTags.push(raw); renderFormTags(); }
+  input.value = '';
+  input.focus();
+}
+
+document.getElementById('addTagBtn').addEventListener('click', addFormTag);
+document.getElementById('tagInput').addEventListener('keydown', e => {
+  if (e.key === 'Enter' || e.key === ',') { e.preventDefault(); addFormTag(); }
+});
+
+document.getElementById('addBtn').addEventListener('click', () => { editingId = null; openModal(); });
+document.getElementById('cancelBtn').addEventListener('click', closeModal);
+document.getElementById('modalOverlay').addEventListener('click', e => { if (e.target === document.getElementById('modalOverlay')) closeModal(); });
+
+// ── Fetch from arXiv ──
+document.getElementById('fetchBtn').addEventListener('click', async () => {
+  const id = document.getElementById('arxivInput').value;
+  const status = document.getElementById('fetchStatus');
+  const preview = document.getElementById('abstractPreview');
+  if (!id.trim()) return;
+  status.textContent = 'Fetching…';
+  const data = await fetchArxiv(id);
+  if (!data) {
+    status.textContent = 'Could not fetch — fill in manually.';
+    return;
+  }
+  document.getElementById('titleInput').value = data.title;
+  document.getElementById('authorsInput').value = data.authors;
+  document.getElementById('yearInput').value = data.year;
+  document.getElementById('arxivInput').value = data.id;
+  if (data.abstract) {
+    preview.textContent = data.abstract;
+    preview.style.display = 'block';
+  }
+  status.textContent = '✓ Fetched';
+  setTimeout(() => status.textContent = '', 2000);
+});
+
+// ── Save entry ──
+document.getElementById('saveEntryBtn').addEventListener('click', () => {
+  const title = document.getElementById('titleInput').value.trim();
+  const arxivId = cleanArxivId(document.getElementById('arxivInput').value) || document.getElementById('arxivInput').value.trim();
+
+  if (!title && !arxivId) { showToast('Add a title or arXiv ID', 'error'); return; }
+  if (!selectedStatus) { showToast('Pick a status', 'error'); return; }
+
+  const abstractEl = document.getElementById('abstractPreview');
+
+  if (editingId) {
+    const p = papers.find(x => x.id === editingId);
+    if (p) {
+      p.title = title;
+      p.arxivId = arxivId;
+      p.authors = document.getElementById('authorsInput').value.trim();
+      p.year = document.getElementById('yearInput').value.trim();
+      p.status = selectedStatus;
+      p.tags = [...formTags];
+      p.note = document.getElementById('noteInput').value.trim();
+      if (abstractEl.style.display !== 'none') p.abstract = abstractEl.textContent;
+    }
+  } else {
+    papers.push({
+      id: uid(),
+      title,
+      arxivId,
+      authors: document.getElementById('authorsInput').value.trim(),
+      year: document.getElementById('yearInput').value.trim(),
+      status: selectedStatus,
+      tags: [...formTags],
+      note: document.getElementById('noteInput').value.trim(),
+      abstract: abstractEl.style.display !== 'none' ? abstractEl.textContent : '',
+      added: Date.now(),
+    });
+  }
+
+  closeModal();
+  renderAll();
+  showToast(editingId ? 'Paper updated' : 'Paper added', 'success');
+});
+
+// ── Load / Save ──
+document.getElementById('loadBtn').addEventListener('click', () => {
+  const input = document.createElement('input');
+  input.type = 'file';
+  input.accept = '.json';
+  input.onchange = e => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = ev => {
+      try {
+        const data = JSON.parse(ev.target.result);
+        if (Array.isArray(data)) { papers = data; renderAll(); showToast(`Loaded ${papers.length} papers`, 'success'); }
+        else showToast('Invalid file format', 'error');
+      } catch { showToast('Could not read file', 'error'); }
+    };
+    reader.readAsText(file);
+  };
+  input.click();
+});
+
+document.getElementById('saveBtn').addEventListener('click', () => {
+  const blob = new Blob([JSON.stringify(papers, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'arxiv_tracker.json';
+  a.click();
+  URL.revokeObjectURL(url);
+  showToast('arxiv_tracker.json saved', 'success');
+});
+
+// ── Init ──
+renderAll();
+</script>
+</body>
+</html>
